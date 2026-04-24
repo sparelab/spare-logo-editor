@@ -52,26 +52,6 @@ jobs:
             dist/release/SHASUMS256.txt
           generate_release_notes: true
 
-  publish-npm:
-    name: Publish to npm
-    needs: build-binaries
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-      - run: bun install --frozen-lockfile
-      # `prepublishOnly` runs scripts/build.ts which writes dist/cli.js (the
-      # node-compatible bundle that ships in the npm tarball).
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
   update-homebrew-tap:
     name: Update Homebrew formula
     needs: publish-release
