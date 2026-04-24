@@ -1,5 +1,7 @@
 # spare-logo-editor
 
+![spare-logo-editor screenshot](img/screenshot.png)
+
 Terminal pixel-art editor for **SGR images** — `.txt` files with embedded ANSI
 escapes that `cat` renders directly. Mouse-driven, INK + React + Bun.
 
