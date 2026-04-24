@@ -1,0 +1,46 @@
+{
+  "name": "spare-logo-editor",
+  "version": "1.0.0",
+  "description": "Terminal CLI editor for SGR pixel art — INK + mouse, with PNG/JPG import and AI generation via GenX.",
+  "type": "module",
+  "bin": {
+    "spare-logo-editor": "bin/spare-logo-editor"
+  },
+  "files": [
+    "bin/spare-logo-editor",
+    "dist/cli.js",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "bun run src/cli.tsx",
+    "build": "bun run scripts/build.ts",
+    "compile": "bun run scripts/compile.ts",
+    "release-build": "bun run scripts/release-build.ts",
+    "start": "node dist/cli.js",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "prepublishOnly": "bun run scripts/build.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sparelab/spare-logo-editor.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ink": "^7.0.1",
+    "jimp": "^1.6.1",
+    "meow": "^14.1.0",
+    "react": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.12",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "bun": "^1.3.13",
+    "ink-testing-library": "^4.0.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
