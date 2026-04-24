@@ -22,13 +22,6 @@ brew install spare-logo-editor
 
 The formula installs a precompiled standalone binary — no Node or Bun required.
 
-### npm (any platform with Node ≥ 20)
-
-```sh
-npm install -g spare-logo-editor
-spare-logo-editor
-```
-
 ### Manual build (from source)
 
 Requires **Bun ≥ 1.3** (`brew install oven-sh/bun/bun` or
@@ -164,15 +157,11 @@ The workflow then:
    `linux-arm64`, `linux-x64`.
 2. Tarballs each binary, computes sha256, and attaches them to a GitHub
    Release.
-3. Publishes the npm package (the JS bundle in `dist/cli.js`) under the same
-   version.
-4. Renders the Homebrew formula with the current version + sha256s and pushes
+3. Renders the Homebrew formula with the current version + sha256s and pushes
    it to `<owner>/homebrew-spare`.
 
-Required repo secrets:
+Required repo secret:
 
-- `NPM_TOKEN` — npm automation token with publish rights for
-  `spare-logo-editor`.
 - `HOMEBREW_TAP_TOKEN` — GitHub PAT (or fine-grained token) with `contents:
   write` on `<owner>/homebrew-spare`.
 
