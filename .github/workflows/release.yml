@@ -119,17 +119,37 @@ jobs:
       - name: Push to homebrew tap repo
         env:
           GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
-          # Tap repo: github.com/<owner>/homebrew-spare
-          TAP_REPO: ${{ github.repository_owner }}/homebrew-spare
+          # Tap repo: github.com/<owner>/homebrew-tap
+          TAP_REPO: ${{ github.repository_owner }}/homebrew-tap
           VERSION: ${{ steps.meta.outputs.version }}
         run: |
           set -euo pipefail
           git clone "https://x-access-token:${GH_TOKEN}@github.com/${TAP_REPO}.git" tap
           mkdir -p tap/Formula
           cp tap-out/spare-logo-editor.rb tap/Formula/spare-logo-editor.rb
+
+          # (Re)write the tap README so the install instructions stay in sync.
+          cat > tap/README.md <<'MD'
+          # sparelab/homebrew-tap
+
+          Homebrew tap maintained by [sparelab](https://github.com/sparelab).
+
+          ## Formulae
+
+          ### [spare-logo-editor](https://github.com/sparelab/spare-logo-editor)
+
+          Terminal CLI editor for SGR pixel-art images — INK + mouse, with
+          PNG/JPG import and AI logo generation via GenX.
+
+          ```sh
+          brew tap sparelab/tap
+          brew install spare-logo-editor
+          ```
+          MD
+
           cd tap
           git config user.email "actions@users.noreply.github.com"
           git config user.name  "github-actions[bot]"
-          git add Formula/spare-logo-editor.rb
+          git add Formula/spare-logo-editor.rb README.md
           git commit -m "spare-logo-editor ${VERSION}" || echo "no changes"
           git push

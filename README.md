@@ -16,7 +16,7 @@ $ spare-logo-editor                 # blank canvas, 'g' to AI-generate a logo
 ### Homebrew (macOS / Linux)
 
 ```sh
-brew tap sparelab/spare
+brew tap sparelab/tap
 brew install spare-logo-editor
 ```
 
@@ -158,12 +158,12 @@ The workflow then:
 2. Tarballs each binary, computes sha256, and attaches them to a GitHub
    Release.
 3. Renders the Homebrew formula with the current version + sha256s and pushes
-   it to `<owner>/homebrew-spare`.
+   it to `<owner>/homebrew-tap`.
 
 Required repo secret:
 
 - `HOMEBREW_TAP_TOKEN` — GitHub PAT (or fine-grained token) with `contents:
-  write` on `<owner>/homebrew-spare`.
+  write` on `<owner>/homebrew-tap`.
 
 ---
 

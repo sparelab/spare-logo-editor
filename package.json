@@ -1,6 +1,6 @@
 {
   "name": "spare-logo-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Terminal CLI editor for SGR pixel art — INK + mouse, with PNG/JPG import and AI generation via GenX.",
   "type": "module",
   "bin": {
